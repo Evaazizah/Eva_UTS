@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         padding: 15,
         borderWidth: 1,
-        borderColor: '#ddd',
+        borderColor: '#ddd'
     },
     resultTitle: {
         fontWeight: 'bold',
