@@ -45,19 +45,22 @@ export default function HomeScreen() {
             <Text style={styles.subtitle}>Temukan dan Pesan Obat dengan Mudah</Text>
             
             <FlatList
-            data={drugs}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({item}) => (
-                <View style={styles.card}>
-                    <Text style={styles.name}>{item.title || 'Nama Obat Tidak Tersedia'}</Text>
-                    <Text>Harga: Rp {item.price}</Text>
-                    <Button
-                        title="Pesan"
-                        onPress={() => router.push('/order')}
-                    />
-                </View>
-            )}
+                data={drugs}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({item}) => (
+                    <View style={styles.card}>
+                        <Text style={styles.name}>{item.title || 'Nama Obat Tidak Tersedia'}</Text>
+                        <Text>Harga: Rp {item.price}</Text>
+                        <Button
+                            title="Pesan"
+                            onPress={() => router.push('/order')}
+                        />
+                    </View>
+                )}
             />
+            <TouchableOpacity onPress={() => router.push('/konsultasi')}>
+                <Text style={styles.konsultasi}>🔎 Ingin Konsultasi? Klik di sini</Text>
+            </TouchableOpacity>
         </View>
 
     );
