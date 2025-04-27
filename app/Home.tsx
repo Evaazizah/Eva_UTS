@@ -6,12 +6,14 @@ export default function HomeScreen() {
     const [drugs, setDrugs] = useState<any[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
         .then((res) => res.json())
         .then((json) => {
             setDrugs(json);
             setLoading(false);
+            console.log('Data Obat:', json);
         })
         .catch((err) => {
             setError('Terjadi Kesalahan saat mengambil data');
@@ -25,6 +27,14 @@ export default function HomeScreen() {
             <View style={styles.center}>
                 <ActivityIndicator size="large" color="#0000ff"/>
                 <Text>Loading...</Text>
+            </View>
+        );
+    }
+
+    if (error) {
+        return (
+            <View style={styles.center}>
+                <Text>{error}</Text>
             </View>
         );
     }
@@ -43,7 +53,7 @@ export default function HomeScreen() {
                     <Text>Harga: Rp {item.price}</Text>
                     <Button
                         title="Pesan"
-                    
+                        onPress={() => router.push('/order')}
                     />
                 </View>
             )}
